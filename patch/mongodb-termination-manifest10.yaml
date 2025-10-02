@@ -5,25 +5,26 @@ description: MongoDB Termination
 
 permanent: true
 
-targetNodes:
-  nodeGroup: nosqldb
+targetNodes: none
+nodeGroupAlias:
+  ${settings.nodeGroup}: nosqldb
 
-onBeforeRedeployContainer[nodeType:mongo]:
+onBeforeRedeployContainer[nosqldb]:
   - stopEvent:
       type: warning
       message: Container redeploy is not supported for MongoDB.
 
-onBeforeAddNode[mongo]: 
+onBeforeAddNode[nosqldb]: 
   - stopEvent:
       type: warning
       message: Scaling out is not supported for MongoDB.
 
-onBeforeResetServicePassword[nodeType:mongo]:
+onBeforeResetServicePassword[nosqldb]:
   - stopEvent:
       type: warning
       message: Password reseting is not supported for MongoDB.
 
-onBeforeResetNodePassword[nodeType:mongo]:
+onBeforeResetNodePassword[nosqldb]:
   - stopEvent:
       type: warning
       message: Password reseting is not supported for MongoDB.
