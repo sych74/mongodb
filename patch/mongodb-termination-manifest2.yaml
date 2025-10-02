@@ -9,9 +9,6 @@ targetNodes: none
 nodeGroupAlias:
   ${settings.nodeGroup}: nosqldb
 
-targetNodes:
-  nodeGroup: nosqldb
- 
 onBeforeRedeployContainer[nosqldb]:
   - stopEvent:
       type: warning
