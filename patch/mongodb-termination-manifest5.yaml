@@ -8,7 +8,7 @@ permanent: true
 targetNodes:
   nodeGroup: nosqldb
 
-onBeforeRedeployContainer[mongo]:
+onBeforeRedeployContainer[nodeType:mongo]:
   - stopEvent:
       type: warning
       message: Container redeploy is not supported for MongoDB.
@@ -18,12 +18,12 @@ onBeforeAddNode[mongo]:
       type: warning
       message: Scaling out is not supported for MongoDB.
 
-onBeforeResetServicePassword[mongo]:
+onBeforeResetServicePassword[nodeType:mongo]:
   - stopEvent:
       type: warning
       message: Password reseting is not supported for MongoDB.
 
-onBeforeResetNodePassword[mongo]:
+onBeforeResetNodePassword[nodeType:mongo]:
   - stopEvent:
       type: warning
       message: Password reseting is not supported for MongoDB.
@@ -39,7 +39,7 @@ onBeforeClone:
       message: Cloning is not supported for MongoDB.
       
 onInstall:
-  - env.nodegroup.ApplyData[${settings.nodeGroup:nosqldb}]:
+  - env.nodegroup.ApplyData[nodeType:mongo]:
       data:
         scalingMode: STATELESS
         isRedeploySupport: false
