@@ -37,3 +37,13 @@ onBeforeClone:
   - stopEvent:
       type: warning
       message: Cloning is not supported for MongoDB.
+      
+onInstall:
+  - env.nodegroup.ApplyData[nosqldb]:
+      data:
+        scalingMode: STATELESS
+        isRedeploySupport: false
+        isResetServicePassword: false
+        validation:
+          scalingMode: STATELESS
+        
