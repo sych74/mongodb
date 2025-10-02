@@ -5,6 +5,10 @@ description: MongoDB Termination
 
 permanent: true
 
+targetNodes: none
+nodeGroupAlias:
+  ${settings.nodeGroup}: nosqldb
+
 targetNodes:
   nodeGroup: nosqldb
  
