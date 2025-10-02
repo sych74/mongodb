@@ -39,7 +39,7 @@ onBeforeClone:
       message: Cloning is not supported for MongoDB.
       
 onInstall:
-  - env.nodegroup.ApplyData[mongo]:
+  - env.nodegroup.ApplyData[${settings.nodeGroup:nosqldb}]:
       data:
         scalingMode: STATELESS
         isRedeploySupport: false
